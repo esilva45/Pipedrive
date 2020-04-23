@@ -10,7 +10,7 @@ namespace ServiceIntegration {
 
         public static NpgsqlConnection GetConnection() {
             try {
-                XElement configXml = XElement.Load(System.AppDomain.CurrentDomain.BaseDirectory + @"\config.xml");
+                XElement configXml = XElement.Load(AppDomain.CurrentDomain.BaseDirectory + @"\config.xml");
 
                 NpgsqlConnectionStringBuilder sb = new NpgsqlConnectionStringBuilder();
                 sb.Host = configXml.Element("DBHost").Value.ToString();

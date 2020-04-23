@@ -20,7 +20,7 @@ namespace ServiceIntegration {
 
         public static void Message() {
             NpgsqlConnection conn = Connection.GetConnection();
-            XElement configXml = XElement.Load(System.AppDomain.CurrentDomain.BaseDirectory + @"\config.xml");
+            XElement configXml = XElement.Load(AppDomain.CurrentDomain.BaseDirectory + @"\config.xml");
             urlligacao = configXml.Element("UrlLigacao").Value.ToString();
             urlservice = configXml.Element("UrlService").Value.ToString();
             token = configXml.Element("Token").Value.ToString();

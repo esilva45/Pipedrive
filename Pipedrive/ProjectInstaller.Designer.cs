@@ -28,15 +28,15 @@
             // 
             // serviceProcessInstaller
             // 
-            this.serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalService;
+            this.serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
             this.serviceProcessInstaller.Password = null;
             this.serviceProcessInstaller.Username = null;
             // 
             // serviceInstaller
             // 
-            this.serviceInstaller.Description = "CRM Integration";
-            this.serviceInstaller.DisplayName = "CRM Integration";
-            this.serviceInstaller.ServiceName = "CRMIntegration";
+            this.serviceInstaller.Description = "Pipedrive Integration";
+            this.serviceInstaller.DisplayName = "Pipedrive Integration";
+            this.serviceInstaller.ServiceName = "PipedriveIntegration";
             // 
             // ProjectInstaller
             // 

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Xml.Linq;
 using Npgsql;
+using System.Globalization;
 
 namespace ServiceIntegration {
     class Util {
@@ -36,7 +37,7 @@ namespace ServiceIntegration {
         }
 
         public static string FindDirectory(string dnowner, string party_dn, string start_time) {
-            XElement configXml = XElement.Load(System.AppDomain.CurrentDomain.BaseDirectory + @"\config.xml");
+            XElement configXml = XElement.Load(AppDomain.CurrentDomain.BaseDirectory + @"\config.xml");
             string patch = configXml.Element("PathFile").Value.ToString();
             string result = dnowner + "/file%20not%20found";
             string file_name = "";
@@ -69,15 +70,13 @@ namespace ServiceIntegration {
         }
 
         public static void Log(string lines) {
-            XElement configXml = XElement.Load(System.AppDomain.CurrentDomain.BaseDirectory + @"\config.xml");
-            string patch = configXml.Element("PathLog").Value.ToString();
-            VerifyDir(patch);
+            VerifyDir(AppDomain.CurrentDomain.BaseDirectory + @"\logs");
 
-            string fileName = DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + "_Logs.txt";
+            string fileName = DateTime.Now.Day.ToString("00") + DateTime.Now.Month.ToString("00") + DateTime.Now.Year.ToString() + "_Logs.out";
 
             try {
-                StreamWriter file = new StreamWriter(patch + fileName, true);
-                file.WriteLine(DateTime.Now.ToString() + ": " + lines);
+                StreamWriter file = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\logs\" + fileName, true);
+                file.WriteLine(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss:fff", CultureInfo.InvariantCulture) + " " + lines);
                 file.Close();
             }
             catch (Exception) { }

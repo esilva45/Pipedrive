@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="CallModel.cs" />
     <Compile Include="Connection.cs" />
+    <Compile Include="License.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
